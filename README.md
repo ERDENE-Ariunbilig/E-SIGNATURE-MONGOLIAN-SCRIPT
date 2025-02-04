@@ -1,2 +1,3 @@
 # E-SIGNATURE-MONGOLIAN-SCRIPT
 Open souce
+AI based
