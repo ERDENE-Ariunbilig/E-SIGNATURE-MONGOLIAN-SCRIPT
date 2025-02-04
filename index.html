@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongolian Converter</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="lang-switch">
+        <button id="langToggle" class="mn">MN</button>
+    </div>
+    <div class="theme-switch">
+        <button id="themeToggle">
+            <span class="material-icons">light_mode</span>
+        </button>
+    </div>
+    <div class="container">
+        <input type="text" id="textInput" placeholder="Текст оруулна уу...">
+        
+        <div id="optionsMenu" class="options-menu">
+            <button id="scriptBtn">МОНГОЛ БИЧИГ</button>
+            <button id="signBtn">ГАРЫН ҮСЭГ</button>
+        </div>
+
+        <canvas id="resultCanvas"></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
