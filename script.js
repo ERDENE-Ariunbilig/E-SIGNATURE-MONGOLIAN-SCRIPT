@@ -202,4 +202,104 @@ function drawSignature(text) {
 function showInfo(message) {
     infoBox.style.display = 'block';
     infoBox.textContent = message;
-} 
+}
+
+// Add this at the start of your existing JavaScript
+const pages = document.querySelectorAll('.page');
+const navLinks = document.querySelectorAll('.main-nav a');
+
+// Handle navigation
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        
+        // Update navigation
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        
+        // Update pages
+        pages.forEach(page => {
+            if (page.id === targetId) {
+                page.classList.add('active');
+            } else {
+                page.classList.remove('active');
+            }
+        });
+    });
+});
+
+// Add after your existing JavaScript
+const agreementItems = document.querySelectorAll('.agreement-item');
+const generateBtn = document.getElementById('generateBtn');
+let activeAgreements = new Set();
+
+// Handle agreement clicks
+agreementItems.forEach(item => {
+    item.addEventListener('click', () => {
+        item.classList.toggle('active');
+        
+        const agreementId = item.dataset.agreement;
+        if (item.classList.contains('active')) {
+            activeAgreements.add(agreementId);
+        } else {
+            activeAgreements.delete(agreementId);
+        }
+        
+        // Enable generate button if all agreements are active
+        generateBtn.disabled = activeAgreements.size !== 3;
+    });
+});
+
+// Create confirmation dialog HTML
+const confirmDialog = document.createElement('div');
+confirmDialog.className = 'confirm-dialog';
+confirmDialog.innerHTML = `
+    <div class="confirm-content">
+        <h2>Та 100% итгэлтэй байна уу?</h2>
+        <div class="confirm-buttons">
+            <button id="confirmYes">Тийм</button>
+            <button id="confirmNo">Үгүй</button>
+        </div>
+    </div>
+`;
+document.body.appendChild(confirmDialog);
+
+// Generate button click handler
+generateBtn.addEventListener('click', () => {
+    if (activeAgreements.size === 3) {
+        confirmDialog.classList.add('show');
+    }
+});
+
+// Handle confirmation buttons
+document.getElementById('confirmYes').addEventListener('click', () => {
+    confirmDialog.classList.remove('show');
+    // Show maker section
+    document.querySelector('.maker-section').classList.add('show');
+});
+
+document.getElementById('confirmNo').addEventListener('click', () => {
+    confirmDialog.classList.remove('show');
+});
+
+// Close dialog when clicking outside
+confirmDialog.addEventListener('click', (e) => {
+    if (e.target === confirmDialog) {
+        confirmDialog.classList.remove('show');
+    }
+});
+
+// Add maker option handlers
+document.querySelectorAll('.maker-option').forEach(option => {
+    option.addEventListener('click', () => {
+        const type = option.dataset.type;
+        if (type === 'script') {
+            window.location.href = 'personal/script.html';
+        } else if (type === 'sign') {
+            window.location.href = 'personal/sign.html';
+        }
+    });
+});
+
+// Rest of your existing JavaScript 

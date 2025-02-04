@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav class="main-nav">
+        <a href="#faq">FAQ</a>
+        <a href="#home" class="active">HOME</a>
+        <a href="#personal">PERSONAL</a>
+    </nav>
+
     <div class="lang-switch">
         <button id="langToggle" class="mn">MN</button>
     </div>
@@ -16,16 +22,83 @@
             <span class="material-icons">light_mode</span>
         </button>
     </div>
-    <div class="container">
-        <input type="text" id="textInput" placeholder="Текст оруулна уу...">
-        
-        <div id="optionsMenu" class="options-menu">
-            <button id="scriptBtn">МОНГОЛ БИЧИГ</button>
-            <button id="signBtn">ГАРЫН ҮСЭГ</button>
-        </div>
 
-        <canvas id="resultCanvas"></canvas>
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="container">
+            <input type="text" id="textInput" placeholder="Текст оруулна уу...">
+            <div id="optionsMenu" class="options-menu">
+                <button id="scriptBtn">МОНГОЛ БИЧИГ</button>
+                <button id="signBtn">ГАРЫН ҮСЭГ</button>
+            </div>
+            <canvas id="resultCanvas"></canvas>
+        </div>
     </div>
+
+    <!-- FAQ Page -->
+    <div id="faq" class="page">
+        <div class="faq-container">
+            <h1>Түгээмэл асуултууд</h1>
+            <div class="faq-item">
+                <h3>Энэ үйлчилгээ юу вэ?</h3>
+                <p>Энэ нь Монгол бичиг болон гарын үсэг хөрвүүлэгч юм.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Хэрхэн ашиглах вэ?</h3>
+                <p>Текстээ оруулаад, SCRIPT эсвэл SIGN сонголтыг хийнэ үү.</p>
+            </div>
+            <!-- Add more FAQ items as needed -->
+        </div>
+    </div>
+
+    <!-- Personal Page -->
+    <div id="personal" class="page">
+        <div class="personal-container">
+            <h1>Хувийн тохиргоо</h1>
+            <div class="agreements">
+                <div class="agreement-item" data-agreement="privacy">
+                    <h3>Нууцлалын бодлого</h3>
+                    <p class="agreement-text">
+                        Таны хувийн мэдээллийг хэрхэн ашиглаж, хамгаалах тухай бодлого.
+                    </p>
+                </div>
+                
+                <div class="agreement-item" data-agreement="terms">
+                    <h3>Үйлчилгээний нөхцөл</h3>
+                    <p class="agreement-text">
+                        Энэхүү үйлчилгээг ашиглах нөхцөл, журам.
+                    </p>
+                </div>
+                
+                <div class="agreement-item" data-agreement="personal">
+                    <h3>Хувийн зөвшөөрөл</h3>
+                    <p class="agreement-text">
+                        Таны хувийн мэдээллийг боловсруулах зөвшөөрөл.
+                    </p>
+                </div>
+            </div>
+            
+            <button id="generateBtn" class="generate-button" disabled>
+                ҮҮСГЭХ
+            </button>
+        </div>
+        <div class="maker-section">
+            <div class="maker-content">
+                <h2>Хувийн тохиргоо үүсгэх</h2>
+                <div class="maker-options">
+                    <button class="maker-option" data-type="script">
+                        <span class="material-icons">draw</span>
+                        SCRIPT
+                    </button>
+                    <button class="maker-option" data-type="sign">
+                        <span class="material-icons">gesture</span>
+                        SIGN
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html> 
