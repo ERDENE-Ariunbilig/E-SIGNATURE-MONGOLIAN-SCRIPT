@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <button class="back-button" onclick="history.back()">← Back</button>
+    <button id="langToggle" class="lang-toggle">MN</button>
+    <div class="maker-container">
         <div class="input-section">
             <input type="text" id="scriptInput" placeholder="Enter text...">
         </div>
@@ -14,6 +17,9 @@
             <canvas id="scriptCanvas"></canvas>
         </div>
     </div>
+    <button id="themeToggle" class="theme-toggle">
+        <span class="material-icons">light_mode</span>
+    </button>
     <script src="script.js"></script>
 </body>
 </html>

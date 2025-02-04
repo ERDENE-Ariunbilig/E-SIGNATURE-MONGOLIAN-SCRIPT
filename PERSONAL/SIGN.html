@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <button class="back-button" onclick="history.back()">← Back</button>
+    <button id="langToggle" class="lang-toggle">MN</button>
     <div class="maker-container">
-        <button class="back-button" onclick="history.back()">← Back</button>
         <div class="maker-header">
             <h1>Sign Maker</h1>
         </div>
@@ -19,6 +20,9 @@
             <canvas id="signCanvas"></canvas>
         </div>
     </div>
+    <button id="themeToggle" class="theme-toggle">
+        <span class="material-icons">light_mode</span>
+    </button>
     <script src="sign.js"></script>
 </body>
 </html>

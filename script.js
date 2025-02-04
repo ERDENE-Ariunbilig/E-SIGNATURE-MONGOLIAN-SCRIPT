@@ -11,8 +11,7 @@ const langToggle = document.getElementById('langToggle');
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = themeToggle.querySelector('.material-icons');
 let isDarkMode = false;
-
-let currentLang = 'mn'; // Changed default to 'mn'
+let currentLang = 'mn'; // Default language
 
 // Set canvas size
 canvas.width = 400;
@@ -59,20 +58,50 @@ function isMongolianCyrillic(text) {
 // Language switch handler
 langToggle.addEventListener('click', () => {
     currentLang = currentLang === 'en' ? 'mn' : 'en';
-    langToggle.textContent = currentLang.toUpperCase();
+    langToggle.textContent = currentLang === 'en' ? 'MN' : 'EN';
     langToggle.classList.toggle('mn');
-    
-    // Update UI text based on language
-    if (currentLang === 'mn') {
-        textInput.placeholder = 'Текст оруулна уу...';
-        scriptBtn.textContent = 'МОНГОЛ БИЧИГ';
-        signBtn.textContent = 'ГАРЫН ҮСЭГ';
-    } else {
-        textInput.placeholder = 'Enter your text...';
-        scriptBtn.textContent = 'SCRIPT';
-        signBtn.textContent = 'SIGN';
-    }
+    updateUI();
 });
+
+function updateUI() {
+    // Update header text
+    document.querySelector('.main-nav a[href="#home"]').textContent = translations[currentLang].header.home;
+    document.querySelector('.main-nav a[href="#faq"]').textContent = translations[currentLang].header.faq;
+    document.querySelector('.main-nav a[href="#personal"]').textContent = translations[currentLang].header.personal;
+
+    // Update button text
+    scriptBtn.textContent = translations[currentLang].header.script;
+    signBtn.textContent = translations[currentLang].header.sign;
+
+    // Update input placeholder
+    textInput.placeholder = translations[currentLang].header.placeholder;
+
+    // Update FAQ section
+    const faqContainer = document.querySelector('.faq-container');
+    faqContainer.querySelector('h1').textContent = translations[currentLang].faq.title;
+    const questions = translations[currentLang].faq.questions;
+    faqContainer.innerHTML = `<h1>${translations[currentLang].faq.title}</h1>`;
+    
+    // Clear previous items and add new ones with fade effect
+    questions.forEach((q, index) => {
+        const faqItem = document.createElement('div');
+        faqItem.classList.add('faq-item');
+        faqItem.innerHTML = `
+            <h3>${q.question}</h3>
+            <p>${q.answer}</p>
+        `;
+        faqContainer.appendChild(faqItem);
+        
+        // Use a timeout to add the visible class for fade effect
+        setTimeout(() => {
+            faqItem.classList.add('visible');
+        }, index * 100); // Stagger the fade-in effect
+    });
+
+    // Update Personal section
+    document.querySelector('.personal-container h1').textContent = translations[currentLang].personal.title;
+    document.getElementById('generateBtn').textContent = translations[currentLang].personal.generate;
+}
 
 let optionSelected = false;
 let currentOption = '';
@@ -303,3 +332,60 @@ document.querySelectorAll('.maker-option').forEach(option => {
 });
 
 // Rest of your existing JavaScript 
+
+const translations = {
+    mn: {
+        header: {
+            home: "Үндсэн",
+            faq: "Асуулт",
+            personal: "Хувийн",
+            script: "МОНГОЛ БИЧИГ",
+            sign: "ГАРЫН ҮСЭГ",
+            placeholder: "Текст оруулна уу...",
+        },
+        faq: {
+            title: "Асуулт",
+            questions: [
+                {
+                    question: "Энэ үйлчилгээ юу вэ?",
+                    answer: "Энэ нь Монгол бичиг болон гарын үсэг хөрвүүлэгч юм."
+                },
+                {
+                    question: "Хэрхэн ашиглах вэ?",
+                    answer: "Текстээ оруулаад, SCRIPT эсвэл SIGN сонголтыг хийнэ үү."
+                }
+            ]
+        },
+        personal: {
+            title: "Хувийн",
+            generate: "Үүсгэх"
+        }
+    },
+    en: {
+        header: {
+            home: "Home",
+            faq: "FAQ",
+            personal: "Personal",
+            script: "SCRIPT",
+            sign: "SIGN",
+            placeholder: "Enter your text...",
+        },
+        faq: {
+            title: "FAQ",
+            questions: [
+                {
+                    question: "What is this service?",
+                    answer: "This is a converter for Mongolian script and signatures."
+                },
+                {
+                    question: "How to use it?",
+                    answer: "Enter your text and select either SCRIPT or SIGN."
+                }
+            ]
+        },
+        personal: {
+            title: "Personal",
+            generate: "Generate"
+        }
+    }
+}; 
