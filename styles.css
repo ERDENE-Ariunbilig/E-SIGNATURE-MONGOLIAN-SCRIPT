@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -146,7 +146,7 @@ body {
     display: none;
 }
 
-/* Header Styles */
+
 header {
     background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -195,7 +195,7 @@ nav {
     cursor: pointer;
 }
 
-/* Main Content Styles */
+
 main {
     margin-top: 80px;
     padding: 2rem;
@@ -269,7 +269,7 @@ main {
     color: #fff;
 }
 
-/* Footer Styles */
+
 footer {
     background: #f8f9fa;
     padding: 2rem;
@@ -295,7 +295,7 @@ footer {
     margin-bottom: 0.5rem;
 }
 
-/* Updated language switcher styles to be consistent */
+
 .lang-switch {
     position: fixed;
     top: 20px;
@@ -319,24 +319,24 @@ footer {
     background: var(--button-hover);
 }
 
-/* Updated MN state to match EN style */
+
 .lang-switch button.mn {
     background: var(--button-bg);
     color: var(--text-color);
     border-color: var(--border-color);
 }
 
-/* Add this to handle placeholder text transition */
+
 #textInput::placeholder {
     transition: all 0.3s ease;
 }
 
-/* Theme related styles with adjusted light mode */
+
 :root {
-    --bg-color: #e9ecef;  /* Darker than before */
-    --text-color: #2c3e50; /* Softer dark color */
+    --bg-color: #e9ecef; 
+    --text-color: #2c3e50;
     --border-color: #6c757d;
-    --button-bg: rgba(233, 236, 239, 0.8); /* Matching new bg */
+    --button-bg: rgba(233, 236, 239, 0.8);
     --button-hover: rgba(108, 117, 125, 0.1);
 }
 
@@ -354,7 +354,7 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Updated theme switcher styles */
+
 .theme-switch {
     position: fixed;
     bottom: 20px;
@@ -385,7 +385,7 @@ body {
     color: var(--text-color);
 }
 
-/* Update existing input styles */
+
 #textInput {
     color: var(--text-color);
     border-bottom: 2px solid var(--border-color);
@@ -396,13 +396,13 @@ body {
     opacity: 0.7;
 }
 
-/* Update existing button styles */
+
 .options-menu button {
     color: var(--text-color);
     border-color: var(--border-color);
 }
 
-/* Add navigation styles */
+
 .main-nav {
     position: fixed;
     top: 20px;
@@ -438,7 +438,7 @@ body {
     width: 100%;
 }
 
-/* Page transition styles */
+
 .page {
     position: absolute;
     width: 100%;
@@ -456,7 +456,7 @@ body {
     visibility: visible;
 }
 
-/* Updated Personal page styles */
+
 .personal-container {
     max-width: 600px;
     width: 90%;
@@ -493,18 +493,18 @@ body {
     background: var(--button-hover);
 }
 
-/* Dark mode specific active state */
+
 [data-theme="dark"] .agreement-item.active {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Light mode specific active state */
+
 [data-theme="light"] .agreement-item.active {
     background: var(--text-color);
 }
 
-/* Active state text colors */
+
 [data-theme="dark"] .agreement-item.active h3,
 [data-theme="dark"] .agreement-item.active .agreement-text {
     color: rgba(255, 255, 255, 0.9);
@@ -548,7 +548,7 @@ body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Confirmation dialog styles */
+
 .confirm-dialog {
     position: fixed;
     top: 0;
@@ -621,7 +621,7 @@ body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Maker section styles */
+
 .maker-section {
     position: fixed;
     top: 0;

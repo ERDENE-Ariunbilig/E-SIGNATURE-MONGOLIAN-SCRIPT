@@ -1,10 +1,10 @@
-// common.js for language switching
+// language switching
 let currentLanguage = 'MN'; // Default language
 
 function toggleLanguage() {
     currentLanguage = currentLanguage === 'MN' ? 'EN' : 'MN';
     document.querySelectorAll('.lang-toggle').forEach(button => {
-        button.textContent = currentLanguage; // Update button text
+        button.textContent = currentLanguage;
     });
     updatePlaceholders();
 }
