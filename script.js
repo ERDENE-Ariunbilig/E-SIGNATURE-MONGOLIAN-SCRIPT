@@ -1,4 +1,3 @@
-
 const canvas = document.getElementById('resultCanvas');
 const ctx = canvas.getContext('2d');
 const textInput = document.getElementById('textInput');
@@ -389,3 +388,133 @@ const translations = {
         }
     }
 }; 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('resultCanvas');
+    const ctx = canvas.getContext('2d');
+    const textInput = document.getElementById('textInput');
+    const signBtn = document.getElementById('signBtn');
+    const fontPopup = document.getElementById('fontPopup');
+    const closeFont = document.getElementById('closeFont');
+    let selectedFont = 'Great Vibes';
+    let isDarkMode = false;
+    let currentLanguage = 'MN';
+
+    // Set canvas size
+    canvas.width = 400;
+    canvas.height = 300;
+
+    const translations = {
+        MN: {
+            inputPlaceholder: "Текст оруулна уу...",
+            scriptBtn: "МОНГОЛ БИЧИГ",
+            signBtn: "ГАРЫН ҮСЭГ",
+            fontPopupTitle: "Загвар сонгох",
+            defaultPreview: "Гарын үсэг"
+        },
+        EN: {
+            inputPlaceholder: "Enter text...",
+            scriptBtn: "MONGOLIAN SCRIPT",
+            signBtn: "SIGNATURE",
+            fontPopupTitle: "Choose Style",
+            defaultPreview: "Signature"
+        }
+    };
+
+    // Show font popup when clicking sign button
+    signBtn.addEventListener('click', () => {
+        fontPopup.style.display = 'block';
+        // Update all previews with current input text
+        updateFontPreviews(textInput.value);
+    });
+
+    // Close popup when clicking X button
+    closeFont.addEventListener('click', () => {
+        fontPopup.style.display = 'none';
+    });
+
+    // Close popup when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === fontPopup) {
+            fontPopup.style.display = 'none';
+        }
+    });
+
+    // Update previews whenever text input changes
+    textInput.addEventListener('input', (e) => {
+        const inputText = e.target.value;
+        updateFontPreviews(inputText);
+        drawSignature(inputText);
+    });
+
+    function updateFontPreviews(text) {
+        const previewText = text || translations[currentLanguage].defaultPreview;
+        document.querySelectorAll('.font-item span').forEach(span => {
+            span.textContent = previewText;
+        });
+    }
+
+    // Font selection
+    document.querySelectorAll('.font-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const font = item.dataset.font;
+            selectedFont = font;
+            
+            // Remove previous selection
+            document.querySelectorAll('.font-item').forEach(i => {
+                i.classList.remove('selected');
+            });
+            
+            // Add selection to clicked item
+            item.classList.add('selected');
+            
+            // Update canvas with selected font
+            drawSignature(textInput.value);
+            
+            // Close popup
+            fontPopup.style.display = 'none';
+        });
+    });
+
+    function drawSignature(text) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        if (text) {
+            ctx.font = `48px "${selectedFont}"`;
+            ctx.fillStyle = isDarkMode ? '#fff' : '#000';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+        }
+    }
+
+    // Language toggle
+    const langToggle = document.getElementById('langToggle');
+    langToggle.addEventListener('click', () => {
+        currentLanguage = currentLanguage === 'MN' ? 'EN' : 'MN';
+        langToggle.textContent = currentLanguage;
+        updateLanguage(currentLanguage);
+    });
+
+    function updateLanguage(lang) {
+        document.getElementById('textInput').placeholder = translations[lang].inputPlaceholder;
+        document.getElementById('scriptBtn').textContent = translations[lang].scriptBtn;
+        document.getElementById('signBtn').textContent = translations[lang].signBtn;
+        document.querySelector('.font-popup-content h2').textContent = translations[lang].fontPopupTitle;
+        
+        // Update previews with current input or default text
+        updateFontPreviews(textInput.value);
+    }
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+        themeToggle.querySelector('.material-icons').textContent = isDarkMode ? 'dark_mode' : 'light_mode';
+        drawSignature(textInput.value);
+    });
+
+    // Initialize
+    updateLanguage(currentLanguage);
+});

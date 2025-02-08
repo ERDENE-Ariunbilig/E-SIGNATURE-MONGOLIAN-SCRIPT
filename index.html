@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mongolian Converter</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&family=Pacifico&family=Sacramento&family=Allura&family=Rouge+Script&family=Mr+Dafoe&family=Petit+Formal+Script&family=Marck+Script&family=Arizonia&family=Alex+Brush&family=Satisfy&family=Tangerine&family=Pinyon+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -30,8 +31,64 @@
             <div id="optionsMenu" class="options-menu">
                 <button id="scriptBtn">МОНГОЛ БИЧИГ</button>
                 <button id="signBtn">ГАРЫН ҮСЭГ</button>
+                <button id="colorBtn" class="color-btn" title="Өнгө сонгох">
+                    <span class="color-preview"></span>
+                    <input type="color" id="colorPicker" value="#000000">
+                </button>
             </div>
             <canvas id="resultCanvas"></canvas>
+        </div>
+        
+        <!-- Add font popup directly here instead of iframe -->
+        <div class="font-popup" id="fontPopup">
+            <div class="font-popup-content">
+                <span class="close-btn" id="closeFont">&times;</span>
+                <h2>Загвар сонгох</h2>
+                <div class="font-grid">
+                    <div class="font-item" data-font="Great Vibes">
+                        <span style="font-family: 'Great Vibes'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Dancing Script">
+                        <span style="font-family: 'Dancing Script'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Pacifico">
+                        <span style="font-family: 'Pacifico'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Sacramento">
+                        <span style="font-family: 'Sacramento'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Allura">
+                        <span style="font-family: 'Allura'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Rouge Script">
+                        <span style="font-family: 'Rouge Script'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Mr Dafoe">
+                        <span style="font-family: 'Mr Dafoe'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Petit Formal Script">
+                        <span style="font-family: 'Petit Formal Script'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Marck Script">
+                        <span style="font-family: 'Marck Script'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Arizonia">
+                        <span style="font-family: 'Arizonia'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Alex Brush">
+                        <span style="font-family: 'Alex Brush'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Satisfy">
+                        <span style="font-family: 'Satisfy'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Tangerine">
+                        <span style="font-family: 'Tangerine'">Гарын үсэг</span>
+                    </div>
+                    <div class="font-item" data-font="Pinyon Script">
+                        <span style="font-family: 'Pinyon Script'">Гарын үсэг</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
